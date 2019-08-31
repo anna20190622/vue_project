@@ -48,7 +48,7 @@ export default {
       const api = `${process.env.APIPATH}/admin/signin`;
       const vm = this;
       //vm.user中的user即帳密
-      this.$http.post(api, vm.user).then(response => {
+      this.$http.post(api, vm.user).then((response) => {
         //如果登入成功後畫面跳到首頁
         if (response.data.success) {
           vm.$router.push('/admin/products');

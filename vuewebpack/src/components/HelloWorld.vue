@@ -16,7 +16,7 @@ export default {
     signout() {
       const api = `${process.env.APIPATH}/logout`;
       const vm = this;
-      this.$http.post(api).then(response => {
+      this.$http.post(api).then((response) => {
         console.log(response.data);
         //如果成功後畫面跳到登入畫面
         if (response.data.success) {

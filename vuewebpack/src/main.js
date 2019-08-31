@@ -4,11 +4,20 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+
+//import loading function
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
+
+import 'bootstrap'; //此項需要一併npm安裝popper.js、jquery
 import App from './App';
 import router from  './router';
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
+
+//啟用loading function
+Vue.component('Loading',Loading);
 
 //(跨域時可用)這個可以防止直接用url就可登入的問題，即加token的作用
 axios.defaults.withCredentials=true;  
@@ -26,7 +35,7 @@ console.log('to',to,'from',from,'next',next);
 if (to.meta.requiresAuth) {
   const api = `${process.env.APIPATH}/api/user/check`;
   //用axios 取代 this.$http
- axios.post(api).then(response => {
+ axios.post(api).then((response) => {
    console.log(response.data);
     if (response.data.success) {
       // vm.$router.push('/');
